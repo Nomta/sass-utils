@@ -1,0 +1,22 @@
+$main-color: #107393; 
+$accent-color: #FD7737;
+$link-color: #107393;
+$muted-color:  #77828E;
+$light-color: #C3C3C3;
+$shadow-color: rgba(#000, 0.16);
+
+$mark-colors: (
+  cyan:cyan,
+  teal: teal,
+  orange: orange,
+  yellow: yellow
+);
+
+$primary-color: $main-color;
+$secondary-color: $accent-color;
+$muted-color: map-get($gray-colors, 200);
+
+$info-color: map-get($mark-colors, cyan);
+$success-color: map-get($mark-colors, teal);
+$warning-color: map-get($mark-colors, orange);
+$mark-color: map-get($mark-colors, yellow);

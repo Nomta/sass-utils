@@ -1,0 +1,76 @@
+@include styles-from-list(d, display, (block, inline-block, table));
+@include styles-from-map(pos, position, (static: static, abs: absolute, rel: relative));
+
+.hidden {
+    display: none !important;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.unscroll {
+    overflow: hidden;
+}
+
+.hr {
+    height: 1px;
+    border: none;
+    color: $muted-color;
+    background-color: $muted-color;
+}
+
+.negative-indent {
+    margin-left: -15px;
+}
+
+.rounded {
+    border-radius: 50%;
+}
+
+.rounded-pill {
+    border-radius: 6px;
+}
+
+.underline {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+//specific classes
+
+//.clearfix:after { 
+//	content: "";
+//	display: table;
+//	clear: both;
+//}
+//.ellipsis {
+//	white-space: nowrap;
+//	overflow: hidden;
+//	text-overflow: ellipsis;
+//}
+//.visible { 
+//	display: block;
+//}
+//.invisible:not(:hover) {
+//	opacity: 0;
+//	transition: 0.2s opacity;
+//}
+//html .video {
+//    position: relative;
+//    padding-bottom: 56.25%;
+//    height: 0;
+//    overflow: hidden;
+//}
+//html .video iframe, 
+//html .video object, 
+//html .video embed {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    heidht: 100%;
+//}
