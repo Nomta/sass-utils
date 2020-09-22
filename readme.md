@@ -1,84 +1,103 @@
-# simple-task
+# Sass Utils
+*Basic classes and mixins for Sass.*  
 
-## структура
+It contains three modules:
+- [base](#base) - reset styles and several useful classes, such as clearfix.
+- [mixins](#mixins) - frequently used mixins.
+- [utils](#utils) - commonly used css classess.
 
-...
+All the modules are included in `main.scss` or you can include them separately.
 
-## utilits
+The settings are in the `variables`.
 
-#### Классы-утилиты:
+### Base
+It resets the styles of the most-used tags and adds the most common classes. Some lines are commented out. Uncomment them to apply a reset or the required classes.
+
+Classes:
+- video: determines the routine aspect ratio of 16:9
+- clearfix: clears the float
+- ellipsis: adds an ellipsis to the single-line text when truncating 
+- hidden: `display: none` for the element
+- visible: `display: block` for the element
+- invisible: makes the element invisible via `opacity: 0` when it is not hovered
+
+### Mixins
+Сontains the most commonly used snippets of css rules. Allows you to shorten the writing of rules by specifying the default property values.
+
+#### Usage 
+```
+/* Before */ 
+
+    bg-image: url(image.png);    // and other background values
+  
+
+/* After */
+
+    background: url(image.png) no-repeat;   // and other background values
+    background-size: cover;
+
+
+/* Before */ 
+
+    bg-mask(rgba(255, 0.1));  // makes a mask over an element
+                             // optional parameters: transition-duration, content
+                         
+/* After */
+
+    position: relative;
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+/* Before */ 
+
+    flex-row();        // optional parameters: justify-content, align-items
+  
+
+/* After */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  
+
+/* Before */ 
+
+    flex-column();        // optional parameters: justify-content, align-items
+  
+
+/* After */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+```
+
+### Utils
+
+Classes:
 - display: d-block, d-inline-block, d-table
 - position: pos-static, pos-rel, pos-abs
 - hidden (display: none)
 - sizes: w-100 (width: 100%), h-100 (height: 100%)
-- border-radius: rounded (50% - круг), rounded-pill (6px)
-- отступы: классы m-*, mx-*, my-*, mt-*, mb-*, ml-*, mr-* и p-* ... pr-*, где * - размер отступа в пикселях: от 5 до 50, кратные 5, от 6 до 24, кратные 2 и 3
-- текст: text-bold, text-left, text-right, text-center, text-muted, text-white, text-underline, text-uppercase, text-nowrap, text-break
-- размеры шрифта: классы fz-*, где * - размер шрифта в пикселях, от 12 до 25
-- flex: flex-wrap, flex-nowrap, flex-column, flex-x-*, flex-y-*, align-self-* (between, around, start, end, center, baseline), flex-xy-center
-- flex-group-* - простая сетка, где * - величина отступа между дочерними элементами, количество элементов может быть любым (основано на flex-wrap: wrap)
+- border-radius: rounded (50%), rounded-pill (6px)
 
-Кроме того, в `utils/utility` есть несколько закомментированных строк для следующих классов:
-- clearfix: очищает float
-- ellipsis: добавляет многоточие к однострочному тексту при усечении
-- visible: добавляет `display: block` для элементов
-- invisible: делает элемент невидимым с помощью opacity: 0, пока на него не будет наведен курсор
-- video: определяет стандартное соотношение сторон для видео - 16:9
+[learn more](./utils/readme)
 
-#### Сетка
-Класс grid-* разбивает элемент-контейнер на * равных по ширине колонок (от 2 до 5), имена колонок задавать не нужно. Чтобы увеличить ширину колонки, ей надо задать класс col-*, 
-где * - число от 2 до общего числа колонок в контейнере (из grid-*). Например: 
+*[back to top](#sass-utils)*  
 
-```
-<div class="grid-3">
-  <div class="col-2">две трети ширины родителя</div>
-  <div>одна треть</div>
-</div>
-```
-При этом количество дочерних элементов не ограничено, при необходимости они переносятся в следующий ряд.
-
-Префиксы по именам брейкпойнтов задают разное количество колонок на разных размерах экрана. Простой класс grid-* - для всех размеров, grid-md-* - для средних и больших, 
-grid-lg-* - для больших. Если указан класс col-* для дочернего элемента, то ему также необходимо указать классы с теми же префиксами по именам брейкпойнтов, что и у родителя, 
-например:
-
-```
-<div class="grid-3 grid-lg-4">
-  <div class="col-2 col-lg-2">у родителя есть класс с префиксом -lg-*, поэтому для дочернего элемента с классом col-* он тоже нужен</div>
-  <div class="col-2 col-lg-4">другая ширина для больших экранов</div>
-  <div>...</div>
-  <div>...</div>
-</div>
-```
-
-Класс grid-parted для родителя задает колонкам равные отступы с помощью свойства padding. Если применен этот класс, контент следует размещать внутри колонок. Пример:
-
-```
-<div class="grid-3">
-  <p>любой элемент непосредственно в контейнере сетки</p>
-  <p>...</p>
-</div>
-
-<div class="grid-3 grid-parted">
-  <div>
-    <p>контент только внутри колонки (например, внутри div)</p>
-  </div>
-  <div>
-    <p>...</p>
-  </div>
-</div>
-```
-
-#### Цветовые темы
-Основные цвета используются в классах border-*, mark-* (background-color), где * - обозначение цветовой темы (info, success, warning).
-
-#### Настройки
-Переменные с настройками находятся в 'base/variables' и 'base/breakpoints'. В  'base/variables' можно переопределить цвета, размеры отступов для сетки (grid-parted), 
-максимальное количество колонок сетки (сейчас 5). В 'base/breakpoints' задаются контрольные точки для медиа запросов.
-
-# Миксины
-Часто используемые css сниппеты.
-- aspect-ratio($ratio) - соотношение сторон для элемента
-- bg-image($background-image, $args...) - стили для фона
-- bg-mask($background, $content: "") - эффект при наведении
-- grid-col($size, $gap: 0, $cols: 12) - float-сетка
-
+### License
+This project is available under the [MIT](./license) license.  
