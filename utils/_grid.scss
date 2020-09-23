@@ -1,6 +1,6 @@
 @import 'variables/grid';
 @import 'variables/breakpoints';
-@import 'service/helpers';
+@import 'mixins/helpers';
 
 
 [class*="grid-"] {
