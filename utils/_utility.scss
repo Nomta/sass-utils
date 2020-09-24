@@ -1,4 +1,6 @@
 @import 'mixins/helpers';
+// @import 'mixins/mixins';
+
 @include styles-from-list(d, display, (block, inline-block, table));
 @include styles-from-map(pos, position, (static: static, abs: absolute, rel: relative));
 
@@ -26,7 +28,7 @@
 }
 
 .negative-indent {
-    margin-left: -15px;
+    margin-left: -$pad;
 }
 
 .rounded {
@@ -34,11 +36,11 @@
 }
 
 .rounded-pill {
-    border-radius: 6px;
+    border-radius: $border-radius;
 }
 
 .underline {
-    border-bottom: 1px solid #f4f4f4;
+    border-bottom: 1px solid $muted-color;
 }
 
 //specific classes
@@ -58,7 +60,7 @@
 //}
 //.invisible:not(:hover) {
 //	opacity: 0;
-//	transition: 0.2s opacity;
+//	@include transition(opacity);
 //}
 //html .video {
 //    position: relative;

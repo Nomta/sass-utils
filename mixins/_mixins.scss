@@ -53,3 +53,7 @@
   }
   float: left;
 }
+
+@mixin transition($property: all, $duration: $transition-duration, $args...) {
+  transition: $property $duration $args
+}
