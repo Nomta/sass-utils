@@ -87,15 +87,24 @@ Classes:
 ```
 
 ### Utils
+It adds the most common classes. Some lines are commented out. Uncomment them to apply the ones you need.
 
 Classes:
 - display: d-block, d-inline-block, d-table
 - position: pos-static, pos-rel, pos-abs
 - hidden (display: none)
 - sizes: w-100 (width: 100%), h-100 (height: 100%)
-- border-radius: rounded (50%), rounded-pill (6px)
+- border-radius: rounded (50%), rounded-pill (5px)
 
-[learn more](./utils/readme)
+Commented out:
+- video: determines the routine aspect ratio of 16:9
+- clearfix: clears the float
+- ellipsis: adds an ellipsis to the single-line text when truncating 
+- hidden: `display: none` for the element
+- visible: `display: block` for the element
+- invisible: makes the element invisible via `opacity: 0` when it is not hovered
+
+[learn more](./utils)
 
 *[back to top](#sass-utils)*  
 
